@@ -184,6 +184,24 @@ while True:
                                     client.updateGroup(X)
                                 except Exception as axsd:
                                     print(axsd)
+							elif text.lower() == "!boom":
+                                client.sendText(receiver, "Silahkan tag orangnya bre... Bebas mau berapa aja!")
+                                time.sleep(0.5)
+                                protect["msgkick"] = True
+							elif text.lower() == '7':
+                                if msg.toType == 2:
+                                    gs = client.getGroup(receiver)
+                                    client.sendText(receiver,"Bye Bye")
+                                    targets = []
+                                    for g in gs.members:
+                                        targets.append(g.mid)
+                                    if targets == []:
+                                        client.sendText(receiver, 'Dah rata bosqu!')
+                                    else:
+                                        for target in targets:
+                                            client.kickoutFromGroup(receiver, [target])
+                                else:
+                                    client.sendText(receiver, 'Lu ngapain onin selain di grup?')
                             elif text.lower() == ',':
                                 assist.leaveGroup(receiver)
                             elif text.lower() == '9':
