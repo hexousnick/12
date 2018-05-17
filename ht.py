@@ -19,26 +19,26 @@ renBot = [clientMid]
 KCML = [client]
 
 vol = """[ Admin 7 ]
-
-Seimple Command :
-Me <- Look your contact
-Speed/Sp <- Look speedbot
-Mention <- Tagall
-Check:on <- Check reader
-Check:off <- Stop check reader
-Reboot <- Restart bot
-Broadcast [text] <- BC All Group!
-Creator <- For look creator!
+Welcome To My Bot
+Simple Command :
+[•] Me <- Look your contact
+[•] Speed/Sp <- Look speedbot
+[•] Menti[•] on <- Tagall
+[•] Check:on <- Check reader
+[•] Check:off <- Stop check reader
+[•] Reboot <- Restart bot
+[•] Broadcast [text] <- BC All Group!
 
 Protect :
-Protectkick:[on/off] <- Protect from kicker
+[•] Protectkick:[on/off] <- Protect from kicker
 
 Kicker :
-!boom <- Kick member w Mention
-!
+[•] !boom <- Kick member w Mention
+[•] !
 Pergunakan Dengan Bijak!
+▄︻̷̿┻̿═━一 Tembak Ahh
 Salam Admin 7 Ganteng
-[ S E L F B O T ]"""
+[ Love You OON :> ]"""
 
 protect = {
     "kick":{},
