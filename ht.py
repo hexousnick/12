@@ -184,11 +184,11 @@ while True:
                                     client.updateGroup(X)
                                 except Exception as axsd:
                                     print(axsd)
-							elif text.lower() == "!boom":
+			elif text.lower() == "!boom":
                                 client.sendText(receiver, "Silahkan tag orangnya bre... Bebas mau berapa aja!")
                                 time.sleep(0.5)
                                 protect["msgkick"] = True
-							elif text.lower() == '7':
+			elif text.lower() == '7':
                                 if msg.toType == 2:
                                     gs = client.getGroup(receiver)
                                     client.sendText(receiver,"Bye Bye")
@@ -223,15 +223,6 @@ while True:
                                     client.sendText(receiver, "Type 9 to get data siders")
                             elif text.lower() == ';':
                                 restart_program()
-                            elif text.lower().startswith("!"):
-                                targets = []
-                                key = eval(msg.contentMetadata["MENTION"])
-                                key["MENTIONEES"][0]["M"]
-                                for x in key["MENTIONEES"]:
-                                    targets.append(x["M"])
-                                for target in targets:
-                                    if target not in renBot:
-                                        random.choice(KCML).kickoutFromGroup(receiver, [target])
                             elif text.lower().startswith("pkick"):
                                 pset = text.split(":")
                                 pk = text.replace(pset[0] + ":","")
