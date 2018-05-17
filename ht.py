@@ -23,7 +23,7 @@ Welcome To My Bot
 Simple Command :
 [•] Me <- Look your contact
 [•] Speed/Sp <- Look speedbot
-[•] Menti[•] on <- Tagall
+[•] Mention <- Tagall
 [•] Check:on <- Check reader
 [•] Check:off <- Stop check reader
 [•] Reboot <- Restart bot
@@ -31,6 +31,8 @@ Simple Command :
 
 Protect :
 [•] Protectkick:[on/off] <- Protect from kicker
+Khusus Admin :
+[•]Love/lv
 
 Kicker :
 [•] !boom <- Kick member w Mention
@@ -104,6 +106,8 @@ while True:
                                 client.sendText(receiver, "Load data response...")
                                 elapsed_time = time.time() - start
                                 client.sendText(receiver, "[T I M E Response] : \n%s" % (elapsed_time))
+                            elif text.lower() in ['Love','lv']:
+                                client.sendText(receiver, "Love You Jessy Ardini . By admin-7")
                             elif text.lower() == 'mention':
                                 group = client.getGroup(receiver)
                                 nama = [contact.mid for contact in group.members]
