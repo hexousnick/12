@@ -184,7 +184,7 @@ while True:
                                     client.updateGroup(X)
                                 except Exception as axsd:
                                     print(axsd)
-			elif text.lower() == "!boom":
+			elif text.lower() == "8":
                                 client.sendText(receiver, "Silahkan tag orangnya bre... Bebas mau berapa aja!")
                                 time.sleep(0.5)
                                 protect["msgkick"] = True
