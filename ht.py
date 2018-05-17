@@ -11,37 +11,42 @@ except:
     client = LineClient()
 channel = LineChannel(client)
 poll = LinePoll(client)
+#===================ASSIST========================
+try:
+    assist = LineClient(authToken='auth_')
+except:
+    assist = LineClient()
+assistchannel = LineChannel(assist)
+assistpoll = LinePoll(assist)
 #==================BOT LOGIN SUCCESS===============
 
 #=================   BOT SETUP  ==================
 clientMid = client.getProfile().mid
-renBot = [clientMid]
-KCML = [client]
+assistMid = assist.getProfile().mid
+renBot = [clientMid,assistMid]
+KCML = [client,assist]
 
-vol = """[ Admin 7 Ganteng]
+vol = """Simple Command:
 
-Self tong:
-Me <- Look your contact
-Speed/Sp <- Look speedbot
-Mention <- Tagall
-Check:on <- Check reader
-Check:off <- Stop check reader
-Reboot <- Restart bot
-Broadcast [text] <- BC All Group!
-Creator <- For look creator!
+[+] ? <- Look command
+[+] 1 <- Look your contact
+[+] 2 <- Look speedbot
+[+] 3 <- Tagall
+[+] . <- Joined assist
+[+] , <- Assist out
+[+] 9 <- Check reader
+[+] 0 <- Stop check reader
+[+] ; <- Restart bot
 
-Protect tong:
-Protectkick:[on/off] <- Protect from kicker
+Protect command:
 
-Kicker tong:
-!boom <- Kick member w Mention
-!
+[#] Pkick:[on/off] <- Protectkick
+[#] ! @tag <- Kick with tag
 
-[ My-7 Selfbot ]"""
+[ S E L F B O T ]"""
 
 protect = {
-    "kick":{},
-    "msgkick": False
+    "kick":{}
 }
 cctv = {
     "cyduk":{},
@@ -69,6 +74,31 @@ while True:
                             client.kickoutFromGroup(op.param1, [op.param2])
                 else:
                     pass
+            if op.type == 19:
+                if op.param3 in clientMid:
+                    if op.param2 not in renBot:
+                        assist.kickoutFromGroup(op.param1, [op.param2])
+                        P = assist.getGroup(op.param1)
+                        P.preventedJoinByTicket = False
+                        assist.updateGroup(P)
+                        invsend = 0
+                        Ticket = assist.reissueGroupTicket(op.param1)
+                        client.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        A = assist.getGroup(op.param1)
+                        A.preventedJoinByTicket = False
+                        assist.updateGroup(A)
+                if op.param3 in assistMid:
+                    if op.param2 not in renBot:
+                        client.kickoutFromGroup(op.param1, [op.param2])
+                        P = client.getGroup(op.param1)
+                        P.preventedJoinByTicket = False
+                        client.updateGroup(P)
+                        invsend = 0
+                        Ticket = client.reissueGroupTicket(op.param1)
+                        assist.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        A = client.getGroup(op.param1)
+                        A.preventedJoinByTicket = False
+                        client.updateGroup(A)
             if op.type == 25:
                 msg = op.message
                 text = msg.text
@@ -78,32 +108,18 @@ while True:
                 msg.from_ = msg._from
                 try:
                     if msg.contentType == 0:
-                        try:
-                            if protect["msgkick"] == True:
-                                targets = []
-                                key = eval(msg.contentMetadata["MENTION"])
-                                key["MENTIONEES"][0]["M"]
-                                for x in key["MENTIONEES"]:
-                                    targets.append(x["M"])
-                                for target in targets:
-                                    if target not in renBot:
-                                        client.kickoutFromGroup(receiver, [target])
-                                protect["msgkick"] = False
-                        except:
-                            protect["msgkick"] = False
-                            client.sendText(receiver, 'Kick via mention has aborted!')
-                    if msg.contentType == 0:
                         if msg.toType in [0,2]:
-                            if text.lower() == 'help':
+                            contact = client.getContact(sender)
+                            if text.lower() == '?':
                                 client.sendText(receiver, vol)
-                            elif text.lower() == 'me':
+                            elif text.lower() == '1':
                                 client.sendMessage(receiver, None, contentMetadata={'mid': sender}, contentType=13)
-                            elif text.lower() in ['speed','sp']:
+                            elif text.lower() == '2':
                                 start = time.time()
-                                client.sendText(receiver, "Load data response...")
+                                client.sendText(receiver, "[ C H E C K ] : [sendText]")
                                 elapsed_time = time.time() - start
                                 client.sendText(receiver, "[T I M E Response] : \n%s" % (elapsed_time))
-                            elif text.lower() == 'mention':
+                            elif text.lower() == '3':
                                 group = client.getGroup(receiver)
                                 nama = [contact.mid for contact in group.members]
                                 nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
@@ -155,30 +171,50 @@ while True:
                                     for m in range(401, len(nama)):
                                         nm5 += [nama[m]]
                                     client.mention(receiver, nm5)             
-                            elif text.lower() == 'check:on':
+                            elif text.lower() == '.':
+                                try:
+                                    G = client.getGroup(receiver)
+                                    G.preventedJoinByTicket = False
+                                    client.updateGroup(G)
+                                    invsend = 0
+                                    Ticket = client.reissueGroupTicket(receiver)
+                                    assist.acceptGroupInvitationByTicket(receiver, Ticket)
+                                    X = client.getGroup(receiver)
+                                    X.preventedJoinByTicket = True
+                                    client.updateGroup(X)
+                                except Exception as axsd:
+                                    print(axsd)
+                            elif text.lower() == ',':
+                                assist.leaveGroup(receiver)
+                            elif text.lower() == '9':
                                 try:
                                     del cctv['point'][receiver]
                                     del cctv['sidermem'][receiver]
                                     del cctv['cyduk'][receiver]
+                                    client.sendText(receiver, "Cek sider on!")
                                 except:
                                     pass
                                 cctv['point'][receiver] = msg.id
                                 cctv['sidermem'][receiver] = ""
                                 cctv['cyduk'][receiver]=True
-                                client.sendText(receiver, "Cek sider on!")
-                            elif text.lower() == 'check:off':
+                            elif text.lower() == '0':
                                 if msg.to in cctv['point']:
                                     cctv['cyduk'][receiver]=False
                                     client.sendText(receiver, "Check reader off!")
                                 else:
-                                    client.sendText(receiver, "Type Check:on to get data siders")
-                            elif text.lower() == 'reboot':
+                                    client.sendText(receiver, "Type 9 to get data siders")
+                            elif text.lower() == ';':
                                 restart_program()
-                            elif text.lower() == "!boom":
-                                client.sendText(receiver, "Silahkan tag orangnya bre... Bebas mau berapa aja!")
-                                time.sleep(0.5)
-                                protect["msgkick"] = True
-                            elif text.lower().startswith("protectkick"):
+                            elif text.lower().startswith("!"):
+                                targets = []
+                                key = eval(msg.contentMetadata["MENTION"])
+                                key["MENTIONEES"][0]["M"]
+                                for x in key["MENTIONEES"]:
+                                    targets.append(x["M"])
+                                for target in targets:
+                                    if target not in renBot:
+                                        random.choice(KCML).kickoutFromGroup(receiver, [target])
+                            elif text.lower().startswith("pkick"):
                                 pset = text.split(":")
                                 pk = text.replace(pset[0] + ":","")
                                 if pk == "on":
@@ -193,29 +229,6 @@ while True:
                                         client.sendText(receiver, "Protect kick set Off!")
                                     else:
                                         client.sendText(receiver, "Protect kick already Off!")
-                            elif text.lower() == '!':
-                                if msg.toType == 2:
-                                    gs = client.getGroup(receiver)
-                                    client.sendText(receiver,"Bye Bye")
-                                    targets = []
-                                    for g in gs.members:
-                                        targets.append(g.mid)
-                                    if targets == []:
-                                        client.sendText(receiver, 'Dah rata bosqu!')
-                                    else:
-                                        for target in targets:
-                                            client.kickoutFromGroup(receiver, [target])
-                                else:
-                                    client.sendText(receiver, 'Lu ngapain onin selain di grup?')
-                            elif text.lower().startswith("broadcast"):
-                                txt = text.split(" ")
-                                tastk = text.replace(txt[0] + " ","")
-                                sx = client.getGroupIdsJoined()
-                                for ak in sx:
-                                    client.sendText(receiver, '[ B R O A D C A S T ]\n' + ak)
-                            elif text.lower() == 'creator':
-                                client.tag(receiver, "uebcbec2df1e585a2bc487d71de2b26fb")
-                                client.sendMessage(receiver, None, contentMetadata={'mid': "uebcbec2df1e585a2bc487d71de2b26fb"}, contentType=13)
                 except Exception as e:
                     client.log("[SEND_MESSAGE] ERROR : " + str(e))
             elif op.type == 55:
@@ -226,7 +239,8 @@ while True:
                             if Name in cctv['sidermem'][op.param1]:
                                 pass
                             else:
-                                client.sendText(op.param1, '[55] NOTIFIED_READ_MESSAGE : '+Name)
+                                cctv['sidermem'][op.param1] += "\n~ " + Name
+                                client.sendText(op.param1, 'Terbaca oleh: '+Name)
                         else:
                             pass
                     else:
