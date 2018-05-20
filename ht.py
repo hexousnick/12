@@ -18,29 +18,26 @@ clientMid = client.getProfile().mid
 renBot = [clientMid]
 KCML = [client]
 
-vol = """[ Admin 7 ]
-Welcome To My Bot
-Simple Command :
-[•] Me <- Look your contact
-[•] Speed/Sp <- Look speedbot
-[•] Mention <- Tagall
-[•] Check:on <- Check reader
-[•] Check:off <- Stop check reader
-[•] Reboot <- Restart bot
-[•] Broadcast [text] <- BC All Group!
+vol = """[ HELLO TONG ^_^ ]
 
-Protect :
-[•] Protectkick:[on/off] <- Protect from kicker
-Khusus Admin :
-[•]Love/lv
+Self tong:
+Me <- Look your contact
+Speed/Sp <- Look speedbot
+Mention <- Tagall
+Check:on <- Check reader
+Check:off <- Stop check reader
+Reboot <- Restart bot
+Broadcast [text] <- BC All Group!
+Creator <- For look creator!
 
-Kicker :
-[•] !boom <- Kick member w Mention
-[•] !
-Pergunakan Dengan Bijak!
-▄︻̷̿┻̿═━一 Tembak Ahh
-Salam Admin 7 Ganteng
-[ Love You OON :> ]"""
+Protect tong:
+Protectkick:[on/off] <- Protect from kicker
+
+Kicker tong:
+!boom <- Kick member w Mention
+!kickall
+
+[ S E L F B O T ]"""
 
 protect = {
     "kick":{},
@@ -106,8 +103,6 @@ while True:
                                 client.sendText(receiver, "Load data response...")
                                 elapsed_time = time.time() - start
                                 client.sendText(receiver, "[T I M E Response] : \n%s" % (elapsed_time))
-                            elif text.lower() in ['Love','lv']:
-                                client.sendText(receiver, "Love You Jessy Ardini . By admin-7")
                             elif text.lower() == 'mention':
                                 group = client.getGroup(receiver)
                                 nama = [contact.mid for contact in group.members]
@@ -198,10 +193,10 @@ while True:
                                         client.sendText(receiver, "Protect kick set Off!")
                                     else:
                                         client.sendText(receiver, "Protect kick already Off!")
-                            elif text.lower() == '!':
+                            elif text.lower() == '!kickall':
                                 if msg.toType == 2:
                                     gs = client.getGroup(receiver)
-                                    client.sendText(receiver,"Bye Bitch!")
+                                    client.sendText(receiver,"Just some casual cleansing ô!")
                                     targets = []
                                     for g in gs.members:
                                         targets.append(g.mid)
@@ -219,8 +214,8 @@ while True:
                                 for ak in sx:
                                     client.sendText(receiver, '[ B R O A D C A S T ]\n' + ak)
                             elif text.lower() == 'creator':
-                                client.tag(receiver, "Admin 7")
-                                client.sendMessage(receiver, None, contentMetadata={'mid': ""}, contentType=13)
+                                client.tag(receiver, "uebcbec2df1e585a2bc487d71de2b26fb")
+                                client.sendMessage(receiver, None, contentMetadata={'mid': "uebcbec2df1e585a2bc487d71de2b26fb"}, contentType=13)
                 except Exception as e:
                     client.log("[SEND_MESSAGE] ERROR : " + str(e))
             elif op.type == 55:
