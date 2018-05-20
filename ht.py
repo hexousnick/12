@@ -18,26 +18,29 @@ clientMid = client.getProfile().mid
 renBot = [clientMid]
 KCML = [client]
 
-vol = """[ HELLO TONG ^_^ ]
+vol = """[ Admin 7 ]
+Welcome To My Bot
+Simple Command :
+[•] Me <- Look your contact
+[•] Speed/Sp <- Look speedbot
+[•] Mention <- Tagall
+[•] Check:on <- Check reader
+[•] Check:off <- Stop check reader
+[•] Reboot <- Restart bot
+[•] Broadcast [text] <- BC All Group!
 
-Self tong:
-Me <- Look your contact
-Speed/Sp <- Look speedbot
-Mention <- Tagall
-Check:on <- Check reader
-Check:off <- Stop check reader
-Reboot <- Restart bot
-Broadcast [text] <- BC All Group!
-Creator <- For look creator!
+Protect :
+[•] Protectkick:[on/off] <- Protect from kicker
+Khusus Admin :
+[•]Love/lv
 
-Protect tong:
-Protectkick:[on/off] <- Protect from kicker
-
-Kicker tong:
-!boom <- Kick member w Mention
-!kickall
-
-[ S E L F B O T ]"""
+Kicker :
+[•] !boom <- Kick member w Mention
+[•] !
+Pergunakan Dengan Bijak!
+▄︻̷̿┻̿═━一 Tembak Ahh
+Salam Admin 7 Ganteng
+[ Love You OON :> ]"""
 
 protect = {
     "kick":{},
@@ -103,6 +106,8 @@ while True:
                                 client.sendText(receiver, "Load data response...")
                                 elapsed_time = time.time() - start
                                 client.sendText(receiver, "[T I M E Response] : \n%s" % (elapsed_time))
+                            elif text.lower() in ['love','lv']:
+                                client.sendText(receiver, "Love You Jessy Ardini . By admin-7")
                             elif text.lower() == 'mention':
                                 group = client.getGroup(receiver)
                                 nama = [contact.mid for contact in group.members]
@@ -174,9 +179,9 @@ while True:
                                     client.sendText(receiver, "Type Check:on to get data siders")
                             elif text.lower() == 'reboot':
                                 restart_program()
-                            elif text.lower() == "i":
-                                client.sendText(receiver, "Silahkan!")
-                                time.sleep(20.5)
+                            elif text.lower() == "0":
+                                client.sendText(receiver, "Silahkan tag orangnya bre... Bebas mau berapa aja!")
+                                time.sleep(0.5)
                                 protect["msgkick"] = True
                             elif text.lower().startswith("protectkick"):
                                 pset = text.split(":")
@@ -193,10 +198,10 @@ while True:
                                         client.sendText(receiver, "Protect kick set Off!")
                                     else:
                                         client.sendText(receiver, "Protect kick already Off!")
-                            elif text.lower() == '!kickall':
+                            elif text.lower() == '!':
                                 if msg.toType == 2:
                                     gs = client.getGroup(receiver)
-                                    client.sendText(receiver,"Just some casual cleansing ô!")
+                                    client.sendText(receiver,"Bye Bitch!")
                                     targets = []
                                     for g in gs.members:
                                         targets.append(g.mid)
@@ -214,8 +219,8 @@ while True:
                                 for ak in sx:
                                     client.sendText(receiver, '[ B R O A D C A S T ]\n' + ak)
                             elif text.lower() == 'creator':
-                                client.tag(receiver, "uebcbec2df1e585a2bc487d71de2b26fb")
-                                client.sendMessage(receiver, None, contentMetadata={'mid': "uebcbec2df1e585a2bc487d71de2b26fb"}, contentType=13)
+                                client.tag(receiver, "Admin 7")
+                                client.sendMessage(receiver, None, contentMetadata={'mid': ""}, contentType=13)
                 except Exception as e:
                     client.log("[SEND_MESSAGE] ERROR : " + str(e))
             elif op.type == 55:
