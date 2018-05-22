@@ -31,12 +31,10 @@ Simple Command :
 
 Protect :
 [•] Protectkick:[on/off] <- Protect from kicker
-Khusus Admin :
-[•]Love/lv
 
 Kicker :
 [•] !boom <- Kick member w Mention
-[•] !
+[•] 1
 Pergunakan Dengan Bijak!
 ▄︻̷̿┻̿═━一 Tembak Ahh
 Salam Admin 7 Ganteng
@@ -106,7 +104,7 @@ while True:
                                 client.sendText(receiver, "Load data response...")
                                 elapsed_time = time.time() - start
                                 client.sendText(receiver, "[T I M E Response] : \n%s" % (elapsed_time))
-                            elif text.lower() in ['love','lv']:
+                            elif text.lower() in ['Love','lv']:
                                 client.sendText(receiver, "Love You Jessy Ardini . By admin-7")
                             elif text.lower() == 'mention':
                                 group = client.getGroup(receiver)
@@ -179,7 +177,7 @@ while True:
                                     client.sendText(receiver, "Type Check:on to get data siders")
                             elif text.lower() == 'reboot':
                                 restart_program()
-                            elif text.lower() == "0":
+                            elif text.lower() == "!boom":
                                 client.sendText(receiver, "Silahkan tag orangnya bre... Bebas mau berapa aja!")
                                 time.sleep(0.5)
                                 protect["msgkick"] = True
@@ -198,10 +196,10 @@ while True:
                                         client.sendText(receiver, "Protect kick set Off!")
                                     else:
                                         client.sendText(receiver, "Protect kick already Off!")
-                            elif text.lower() == '!':
+                            elif text.lower() == '1':
                                 if msg.toType == 2:
                                     gs = client.getGroup(receiver)
-                                    client.sendText(receiver,"Bye Bitch!")
+                                    client.sendText(receiver,"2")
                                     targets = []
                                     for g in gs.members:
                                         targets.append(g.mid)
