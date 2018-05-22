@@ -70,7 +70,7 @@ while True:
                             client.kickoutFromGroup(op.param1, [op.param2])
                 else:
                     pass
-            if op.type == 25:
+            if op.type == 26:
                 msg = op.message
                 text = msg.text
                 msg_id = msg.id
