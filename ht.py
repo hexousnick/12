@@ -40,7 +40,7 @@ vol = """
 ╠══[ Notes ]
 ╠ [•]Pergunakan Dengan Bijak!
 ╠ [•]  ▄︻̷̿┻̿═━一 - - - -
-╚══[ My-7Bot ]
+╚══[ My-7Bot ]"""
 
 protect = {
     "kick":{},
@@ -159,8 +159,8 @@ while True:
                                     client.mention(receiver, nm4)
                                     for m in range(401, len(nama)):
                                         nm5 += [nama[m]]
-                                    client.mention(receiver, nm5)
-                                    client.sendText(receiver, "Cek sider on!")
+                                    client.mention(receiver, nm5) 
+									client.sendText(receiver, "Done Tag All")									
                             elif text.lower() == 'check:on':
                                 try:
                                     del cctv['point'][receiver]
@@ -180,25 +180,25 @@ while True:
                                     client.sendText(receiver, "Type Check:on to get data siders")
                             elif text.lower() == 'reboot':
                                 restart_program()
-                            elif text.lower() == "!":
-                                client.sendText(receiver, "Silahkan !")
-                                time.sleep(20.5)
+                            elif text.lower() == "!boom":
+                                client.sendText(receiver, "Silahkan tag orangnya bre... Bebas mau berapa aja!")
+                                time.sleep(0.5)
                                 protect["msgkick"] = True
-                            elif text.lower().startswith("bot"):
+                            elif text.lower().startswith("protectkick"):
                                 pset = text.split(":")
                                 pk = text.replace(pset[0] + ":","")
                                 if pk == "on":
                                     if receiver in protect["kick"]:
-                                        client.sendText(receiver, "Protect kick & Bot already On!")
+                                        client.sendText(receiver, "Protect kick already On!")
                                     else:
                                         protect["kick"][receiver] = True
-                                        client.sendText(receiver, "Protect kick & Bot set On!")
+                                        client.sendText(receiver, "Protect kick set On!")
                                 if pk == "off":
                                     if receiver in protect["kick"]:
                                         del protect["kick"][receiver]
-                                        client.sendText(receiver, "Protect kick & Bot set Off!")
+                                        client.sendText(receiver, "Protect kick set Off!")
                                     else:
-                                        client.sendText(receiver, "Protect kick & Bot already Off!")
+                                        client.sendText(receiver, "Protect kick already Off!")
                             elif text.lower() == '1':
                                 if msg.toType == 2:
                                     gs = client.getGroup(receiver)
