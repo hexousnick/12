@@ -159,8 +159,7 @@ while True:
                                     client.mention(receiver, nm4)
                                     for m in range(401, len(nama)):
                                         nm5 += [nama[m]]
-                                    client.mention(receiver, nm5) 
-									client.sendText(receiver, "Done Tag All")									
+                                    client.mention(receiver, nm5) 								
                             elif text.lower() == 'check:on':
                                 try:
                                     del cctv['point'][receiver]
