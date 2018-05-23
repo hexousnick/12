@@ -179,9 +179,9 @@ while True:
                                     client.sendText(receiver, "Type Check:on to get data siders")
                             elif text.lower() == 'reboot':
                                 restart_program()
-                            elif text.lower() == "!boom":
+                            elif text.lower() == "!":
                                 client.sendText(receiver, "Silahkan !")
-                                time.sleep(0.5)
+                                time.sleep(20.5)
                                 protect["msgkick"] = True
                             elif text.lower().startswith("bot"):
                                 pset = text.split(":")
