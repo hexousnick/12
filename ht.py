@@ -180,24 +180,24 @@ while True:
                             elif text.lower() == 'reboot':
                                 restart_program()
                             elif text.lower() == "!boom":
-                                client.sendText(receiver, "Silahkan tag orangnya bre... Bebas mau berapa aja!")
+                                client.sendText(receiver, "Silahkan !")
                                 time.sleep(0.5)
                                 protect["msgkick"] = True
-                            elif text.lower().startswith("protectkick"):
+                            elif text.lower().startswith("bot"):
                                 pset = text.split(":")
                                 pk = text.replace(pset[0] + ":","")
                                 if pk == "on":
                                     if receiver in protect["kick"]:
-                                        client.sendText(receiver, "Protect kick already On!")
+                                        client.sendText(receiver, "Protect kick & Bot already On!")
                                     else:
                                         protect["kick"][receiver] = True
-                                        client.sendText(receiver, "Protect kick set On!")
+                                        client.sendText(receiver, "Protect kick & Bot set On!")
                                 if pk == "off":
                                     if receiver in protect["kick"]:
                                         del protect["kick"][receiver]
-                                        client.sendText(receiver, "Protect kick set Off!")
+                                        client.sendText(receiver, "Protect kick & Bot set Off!")
                                     else:
-                                        client.sendText(receiver, "Protect kick already Off!")
+                                        client.sendText(receiver, "Protect kick & Bot already Off!")
                             elif text.lower() == '1':
                                 if msg.toType == 2:
                                     gs = client.getGroup(receiver)
