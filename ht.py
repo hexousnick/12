@@ -30,6 +30,7 @@ vol = """
 ╠ [•] Check:off <- Stop check reader
 ╠ [•] Reboot <- Restart bot
 ╠ [•] Broadcast [text] <- BC All Group!
+╠ [•]Creator
 ╠══[ ProtectGroup ]
 ╠ [•] Bot:[on/off] <- Protect from kicker
 ╠══[ PlayGroup ]
