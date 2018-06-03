@@ -219,8 +219,8 @@ while True:
                                 for ak in sx:
                                     client.sendText(receiver, '[ B R O A D C A S T ]\n' + ak)
                             elif text.lower() == 'creator':
-                                client.tag(receiver, "Admin 7")
-                                client.sendMessage(receiver, None, contentMetadata={'mid': ""}, contentType=13)
+                                client.tag(receiver, "u652ecfe3db603bf12dbea1ca941ad2ab")
+                                client.sendMessage(receiver, None, contentMetadata={'mid': "u652ecfe3db603bf12dbea1ca941ad2ab"}, contentType=13)
                 except Exception as e:
                     client.log("[SEND_MESSAGE] ERROR : " + str(e))
             elif op.type == 55:
